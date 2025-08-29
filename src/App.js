@@ -26,18 +26,24 @@ function App() {
     scrollToBottom();
   }, [messages]);
 
-  const handleSendMessage = async () => {
-    if (inputValue.trim() === '' || isLoading) return;
+  const handleSendMessage = async (messageText = null) => {
+    const textToSend = messageText || inputValue.trim();
+    if (textToSend === '' || isLoading) return;
 
     try {
-      const messageText = inputValue.trim();
-      setInputValue(''); // Clear input immediately for better UX
+      if (!messageText) {
+        setInputValue(''); // Only clear input if not from suggestion click
+      }
       
-      await sendMessage(messageText);
+      await sendMessage(textToSend);
     } catch (err) {
       console.error('Failed to send message:', err);
       // Error is already handled by the hook
     }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    handleSendMessage(suggestion);
   };
 
   const handleKeyPress = (e) => {
@@ -46,6 +52,15 @@ function App() {
       handleSendMessage();
     }
   };
+
+  // Suggested questions for users to get started
+  const suggestions = [
+    "What are Jorge's main skills?",
+    "What's he into? Hobbies... Movies...?",
+    "What are some of Jorge's accomplishments?",
+    "Tell me about Jorge's coolest projects",
+    "What makes Jorge unique as a developer?"
+  ];
 
   return (
     <div className="App">
@@ -138,6 +153,27 @@ function App() {
           
           <div ref={messagesEndRef} />
         </div>
+
+        {/* Suggestion chips */}
+        {messages.length <= 1 && !isLoading && (
+          <div className="suggestions-container">
+            <div className="suggestions-header">
+              <span className="suggestions-title">💡 Try asking:</span>
+            </div>
+            <div className="suggestions-grid">
+              {suggestions.map((suggestion, index) => (
+                <button
+                  key={index}
+                  className="suggestion-chip"
+                  onClick={() => handleSuggestionClick(suggestion)}
+                  disabled={isLoading}
+                >
+                  {suggestion}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="input-container">
           <div className="input-wrapper">
