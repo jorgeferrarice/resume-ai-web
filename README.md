@@ -6,6 +6,10 @@
 ### **Experience Elevatr now at:**
 # 👉 **[https://resume-ai-web.onrender.com](https://resume-ai-web.onrender.com)** 👈
 
+
+[![Better Stack Badge](https://uptime.betterstack.com/status-badges/v1/monitor/2486f.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
+
+
 ---
 
 *Meet Jorge Ferrari Ce through his intelligent AI companion!*
