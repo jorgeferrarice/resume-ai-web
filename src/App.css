@@ -504,6 +504,40 @@ body {
   cursor: not-allowed;
 }
 
+/* GitHub Links */
+.github-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #64748b;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.github-link:hover {
+  color: #334155;
+  background: #f1f5f9;
+  transform: translateY(-1px);
+}
+
+.github-link svg {
+  transition: transform 0.2s ease;
+}
+
+.github-link:hover svg {
+  transform: scale(1.1);
+}
+
 .message-input {
   width: 100%;
   border: 2px solid #e2e8f0;
@@ -610,6 +644,15 @@ body {
     font-size: 13px;
     padding: 8px 14px;
   }
+
+  .github-links {
+    gap: 8px;
+  }
+
+  .github-link {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
   
   .input-container {
     padding: 15px 20px;
@@ -648,5 +691,19 @@ body {
   .suggestion-chip {
     font-size: 12px;
     padding: 7px 12px;
+  }
+
+  .github-links {
+    gap: 6px;
+  }
+
+  .github-link {
+    font-size: 10px;
+    padding: 2px 4px;
+  }
+
+  .github-link svg {
+    width: 12px;
+    height: 12px;
   }
 }
